@@ -15,3 +15,6 @@ Rules –
 
 Reference of documentation –
 https://www.pygame.org/docs/ref/draw.html
+
+![Image](https://github.com/somesh2001/-CS3001-Digital_game---AU19B1011/blob/master/Screenshot%20(892).png)
+![Image](https://github.com/somesh2001/-CS3001-Digital_game---AU19B1011/blob/master/github.png)
