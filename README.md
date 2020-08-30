@@ -18,3 +18,31 @@ https://www.pygame.org/docs/ref/draw.html
 
 ![Image](https://github.com/somesh2001/-CS3001-Digital_game---AU19B1011/blob/master/Screenshot%20(892).png)
 ![Image](https://github.com/somesh2001/-CS3001-Digital_game---AU19B1011/blob/master/github.png)
+
+import pygame
+
+pygame.init()          #initialise the pygame
+
+
+width_screen = 820
+height_screen = 620
+
+"""screen"""
+
+SCREEN_Display = pygame.display.set_mode((width_screen,height_screen ))   #creating the screen using pygame and pass the tuple as 'width' and 'height' of screen
+
+""" player size, position and color"""
+Green = (0,128,0)        #green colour RGB
+PLAYER = [410,500]               #set the parameters of player(400 = left, 305 = right, 55)
+size_of_player = [55,55]         # set the size of the player height, 55 = widht) 
+
+""" Enemie size, position and color"""
+red = (255,0,0)
+Enemy = [400,0]               #set the parameters of Enimie(100 = left, 0 = top)
+size_of_Enemy = [55,55] 
+
+pygame.draw.ellipse(SCREEN_Display, Green, (PLAYER[0],PLAYER[1],size_of_player[0],size_of_player[1])) 
+
+pygame.draw.ellipse(SCREEN_Display, red, (Enemy[0],Enemy[1],size_of_Enemy[0],size_of_Enemy[1]))        
+pygame.display.update()
+
