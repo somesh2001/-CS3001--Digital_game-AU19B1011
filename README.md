@@ -34,15 +34,36 @@ SCREEN_Display = pygame.display.set_mode((width_screen,height_screen ))   #creat
 """ player size, position and color"""
 Green = (0,128,0)        #green colour RGB
 PLAYER = [410,500]               #set the parameters of player(400 = left, 305 = right, 55)
-size_of_player = [55,55]         # set the size of the player height, 55 = widht) 
+size_of_player = 55         # set the size of the player height, 55 = widht) 
 
 """ Enemie size, position and color"""
 red = (255,0,0)
 Enemy = [400,0]               #set the parameters of Enimie(100 = left, 0 = top)
-size_of_Enemy = [55,55] 
+size_of_enemy = 55 
 
-pygame.draw.ellipse(SCREEN_Display, Green, (PLAYER[0],PLAYER[1],size_of_player[0],size_of_player[1])) 
+GAME_OVER = False
 
-pygame.draw.ellipse(SCREEN_Display, red, (Enemy[0],Enemy[1],size_of_Enemy[0],size_of_Enemy[1]))        
-pygame.display.update()
+    
+while not GAME_OVER:
+    
+    """ Watch for keyboard and mouse events"""
+    for every_event in pygame.event.get():   #pygame 'event' track everything that we do on the screen
+        if every_event.type == pygame.QUIT:   # To quit from the screen
+            sys.exit() 
+        if every_event.type == pygame.KEYDOWN:       #for making the movement of the player 
+            playerPosition_X =  PLAYER[0]                #taking the current position of player 
+            playerPosition_Y = PLAYER[1]
+            
+            if every_event.key == pygame.K_LEFT:
+                playerPosition_X -= 55                   #Move the player to the left 
+            elif every_event.key == pygame.K_RIGHT:
+                playerPosition_X += 55                     #Move the player to the lef
+                
+            PLAYER = (playerPosition_X,playerPosition_Y)      #new position of player 
+    
+    SCREEN_Display.fill((0,0,0))
+    pygame.draw.ellipse(SCREEN_Display, Green, (PLAYER[0],PLAYER[1],size_of_player,size_of_player))  
+    pygame.draw.ellipse(SCREEN_Display, red, (Enemy[0],Enemy[1],size_of_enemy,size_of_enemy))
+    pygame.display.update()
+    
 
