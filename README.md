@@ -19,51 +19,31 @@ https://www.pygame.org/docs/ref/draw.html
 ![Image](https://github.com/somesh2001/-CS3001-Digital_game---AU19B1011/blob/master/Screenshot%20(892).png)
 ![Image](https://github.com/somesh2001/-CS3001-Digital_game---AU19B1011/blob/master/github.png)
 
-import pygame
+Technical requirements –
+Module:
+Pygame – 
+The pygame library is an open-source module for the Python programming language specifically intended to help you make games.
+1) You control your main loop - You call pygame functions, they don't call your functions.   This gives you greater control when using other libraries, and for different types of programs.      
+2) Small amount of code - It does not have hundreds of thousands of lines of code for things you won't use anyway. The core is kept simple, and extra things like GUI libraries, and effects are developed separately outside of pygame.                                     
+Sys module –
+This module provides access to some variables used or maintained by the interpreter and to functions that interact strongly with the interpreter. It is always available.
+Random module –
+Python has a built-in module that you can use to make random numbers.                 	  
+The module has a sets of different – different method.
 
-pygame.init()          #initialise the pygame
+Design and implementation – 
+•	How to display the screen
+•	How to display player block and enemy Block on the screen
+•	Player and Enemy block should have different colours
+•	Move the player block left and right
+•	Try to Fall down the enemy block
+•	Set the position of enemy to a random value, so it appear randomly at any place on the screen at the top.
+•	Bunch of Enemy fall down randomly on the player block. 
+•	Try to detect collision between the player block and the Enemy block
+•	If there is the collision between the player block and enemy block than stop the game
+•	Try to display the score on the screen.
+•	Score - We want our score to increase as we (player) successfully dodge each enemy block.
+•	As the score reaches to 20 the speed of the enemy block to fall down is also increases.
+•	Next incrementation in the speed when the score reaches to 40,60 and the last incrementation in the speed when the score reaches to 80.
 
-
-width_screen = 820
-height_screen = 620
-
-"""screen"""
-
-SCREEN_Display = pygame.display.set_mode((width_screen,height_screen ))   #creating the screen using pygame and pass the tuple as 'width' and 'height' of screen
-
-""" player size, position and color"""
-Green = (0,128,0)        #green colour RGB
-PLAYER = [410,500]               #set the parameters of player(400 = left, 305 = right, 55)
-size_of_player = 55         # set the size of the player height, 55 = widht) 
-
-""" Enemie size, position and color"""
-red = (255,0,0)
-Enemy = [400,0]               #set the parameters of Enimie(100 = left, 0 = top)
-size_of_enemy = 55 
-
-GAME_OVER = False
-
-    
-while not GAME_OVER:
-    
-    """ Watch for keyboard and mouse events"""
-    for every_event in pygame.event.get():   #pygame 'event' track everything that we do on the screen
-        if every_event.type == pygame.QUIT:   # To quit from the screen
-            sys.exit() 
-        if every_event.type == pygame.KEYDOWN:       #for making the movement of the player 
-            playerPosition_X =  PLAYER[0]                #taking the current position of player 
-            playerPosition_Y = PLAYER[1]
-            
-            if every_event.key == pygame.K_LEFT:
-                playerPosition_X -= 55                   #Move the player to the left 
-            elif every_event.key == pygame.K_RIGHT:
-                playerPosition_X += 55                     #Move the player to the lef
-                
-            PLAYER = (playerPosition_X,playerPosition_Y)      #new position of player 
-    
-    SCREEN_Display.fill((0,0,0))
-    pygame.draw.ellipse(SCREEN_Display, Green, (PLAYER[0],PLAYER[1],size_of_player,size_of_player))  
-    pygame.draw.ellipse(SCREEN_Display, red, (Enemy[0],Enemy[1],size_of_enemy,size_of_enemy))
-    pygame.display.update()
-    
 
