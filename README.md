@@ -48,5 +48,7 @@ Design and implementation –
 
 Flow - 
 ![Image](https://github.com/somesh2001/-CS3001--Digital_game-AU19B1011/blob/master/Flow.png)
-
+![Image](https://github.com/somesh2001/-CS3001--Digital_game-AU19B1011/blob/master/Screenshot%20(913).png)
+![Image](https://github.com/somesh2001/-CS3001--Digital_game-AU19B1011/blob/master/Screenshot%20(915).png)
+![Image](https://github.com/somesh2001/-CS3001--Digital_game-AU19B1011/blob/master/Screenshot%20(916).png)
 
