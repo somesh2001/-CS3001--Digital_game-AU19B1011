@@ -46,4 +46,7 @@ Design and implementation –
 •	As the score reaches to 20 the speed of the enemy block to fall down is also increases.
 •	Next incrementation in the speed when the score reaches to 40,60 and the last incrementation in the speed when the score reaches to 80.
 
+Flow - 
+![Image](https://github.com/somesh2001/-CS3001--Digital_game-AU19B1011/blob/master/Flow.png)
+
 
