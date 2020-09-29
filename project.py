@@ -22,7 +22,7 @@ size_of_player = 55     # set the size of the player height, 55 = widht)
 """ Enemie size, position and color"""
 size_of_enemy = 55 
 red = (255,0,0)
-Enemy = [random.randint(0,width_screen),0]               #set the parameters of Enimie(100 = left, 0 = top)
+Enemy = [random.randint(0,width_screen - size_of_enemy),0]               #set the parameters of Enimie(100 = left, 0 = top)
 
 GAME_SCORE = 0  #initially game score is 0
 
@@ -79,8 +79,8 @@ def EnemyDraw(LIST_Enemy):
 
 """TO DROP MULTIPLE ENIMIES FROM THE TOP"""
 
-def enemy_fall(LIST_Enemy):            # This function look at the LIST_enemy 
-    DELAY = random.random()            # random.random() = generate random float value between 0 and 1 
+def enemy_fall(LIST_Enemy):            # This function look at the LIST_enemy
+    DELAY = random.random()            # random.random() = generate random float value between 0 and 1
     if len(LIST_Enemy) < 10 and DELAY < 0.1:                              # Keep adding enemies until we have 10 total in our list(LIST_Enemy)
         Enemy_x_position = random.randint(0,width_screen) #generating the random number
         Enemy_y_position = 0                                              #top of the screen
@@ -110,7 +110,9 @@ def Colli_c(LIST_Enemy,PLAYER):
 
 """Gane is just started""" 
 GAME_OVER = False
-
+playerPosition_X = PLAYER[0]                #taking the current position of player
+playerPosition_Y = PLAYER[1]
+playerSpeed = 0
 while not GAME_OVER:
     
     """ Watch for keyboard and mouse events"""
@@ -118,15 +120,26 @@ while not GAME_OVER:
         if every_event.type == pygame.QUIT:   # To quit from the screen
             sys.exit() 
         if every_event.type == pygame.KEYDOWN:       #for making the movement of the player 
-            playerPosition_X =  PLAYER[0]                #taking the current position of player 
-            playerPosition_Y = PLAYER[1]
+
             
             if every_event.key == pygame.K_LEFT:
-                playerPosition_X -= 55                    #Move the player to the left 
+                playerSpeed = -10                   #Move the player to the left
             elif every_event.key == pygame.K_RIGHT:
-                playerPosition_X += 55                      #Move the player to the right
-                
-            PLAYER = (playerPosition_X,playerPosition_Y)      #new position of player 
+                playerSpeed = 10                      #Move the player to the right
+
+        if every_event.type == pygame.KEYUP:
+            if every_event.key == pygame.K_RIGHT or pygame.K_LEFT:
+                playerSpeed = 0
+
+    playerPosition_X += playerSpeed
+    PLAYER = (playerPosition_X, playerPosition_Y)  # new position of player
+
+    # Boundaries to the Player
+    if playerPosition_X >= (width_screen - size_of_player):
+        playerPosition_X = (width_screen - size_of_player)  # if it comes at right end, stay at right end and does not exceed
+    if playerPosition_X <= 0:
+        playerPosition_X = 0  # if it comes at left end, stay at left end and does not exceed
+
     SCREEN_Display.fill(SCREEN_COLOR)  
 
     """ To move the block down in a loop"""
@@ -165,6 +178,3 @@ while not GAME_OVER:
     """To slow down the speed of enemy block"""
     pygame.time.wait(30)
     pygame.display.update()
-    
-
- 
